@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Game.gd" type="Script" id=1]
+[ext_resource path="res://Asteroid.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1200, 0, 0, 0, 0, 0, 1200, 600, 0, 0, 0, 0, 0, 600, 0, 0, 0, 0, 0, 0 )
+}
+
+[node name="Game" type="Node"]
+script = ExtResource( 1 )
+Asteroid = ExtResource( 2 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 599.503, 300.83 )
+
+[node name="AsteroidTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="ScoreTimer" type="Timer" parent="."]
+
+[node name="InicioTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="InitialPosition" type="Position2D" parent="."]
+position = Vector2( 600, 300 )
+
+[node name="AsteroidsBoundaries" type="Path2D" parent="."]
+curve = SubResource( 1 )
+
+[node name="PathAsteroid" type="PathFollow2D" parent="AsteroidsBoundaries"]
+[connection signal="timeout" from="AsteroidTimer" to="." method="_on_AsteroidTimer_timeout"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
+[connection signal="timeout" from="InicioTimer" to="." method="_on_InicioTimer_timeout"]
