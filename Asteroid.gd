@@ -23,7 +23,7 @@ func _ready():
 	var index = randi() % 2
 	var asteroids_list = textures.keys()
 	var asteroid = asteroids_list[index]
-	init(asteroid, screen_size / 2)
+	#init(asteroid, screen_size / 2)
 
 func init(ast_size, spawn_pos):
 	var scale = Vector2()
@@ -34,7 +34,7 @@ func init(ast_size, spawn_pos):
 	if ast_size == 'small_asteroid':
 		scale.x = 0.25
 		scale.y = 0.25
-		get_node("CollisionShape2D").set_scale(Vector2(0.5,0.5))
+		get_node("CollisionShape2D").set_scale(Vector2(0.6,0.6))
 	else:
 		scale.x = 0.5
 		scale.y = 0.5

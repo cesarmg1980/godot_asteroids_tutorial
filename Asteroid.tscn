@@ -3,8 +3,8 @@
 [ext_resource path="res://Asteroid.gd" type="Script" id=1]
 [ext_resource path="res://meteorite_1.png" type="Texture" id=2]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 54.7883
+[sub_resource type="CircleShape2D" id=3]
+radius = 52.3136
 
 [sub_resource type="ParticlesMaterial" id=2]
 emission_shape = 1
@@ -18,11 +18,15 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 
 [node name="Asteroid" type="KinematicBody2D"]
-position = Vector2( 642.913, 295.501 )
+position = Vector2( 642.913, 296.554 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -4.21057, -3.1579 )
+shape = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -1.4989, -1.29236 )
@@ -32,18 +36,11 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -2.94616, -0.472996 )
-shape = SubResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
-
 [node name="puff" type="Particles2D" parent="."]
 position = Vector2( 40.2211, 35.9121 )
 emitting = false
 amount = 100
-lifetime = 0.3
+lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource( 2 )
