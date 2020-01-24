@@ -19,7 +19,8 @@ var acc = Vector2()
 func _ready():
 	screen_size = get_viewport_rect().size
 	pos = Vector2(screen_size.x / 2, screen_size.y /2)
-	position = pos
+	#position = pos
+	set_position(pos)
 	#set_pos(pos)
 	set_process(true)
 
@@ -51,8 +52,11 @@ func _process(delta):
 	if pos.y < 0:
 		pos.y = screen_size.y
 	
-	position = pos
-	rotation = rot + PI/2
+	#position = pos
+	#rotation = rot + PI/2
+	
+	set_position(pos)
+	set_rotation(rot + PI / 2)
 	
 	
 func shoot():

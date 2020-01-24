@@ -21,7 +21,6 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
-speed = 800
 
 [node name="laser_beam" type="AnimatedSprite" parent="."]
 position = Vector2( 0, 3.25 )

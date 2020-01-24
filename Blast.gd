@@ -1,7 +1,7 @@
 extends Area2D
 
 var vel = Vector2()
-export var speed = 700
+export var speed = 1500
 
 
 # Called when the node enters the scene tree for the first time.
