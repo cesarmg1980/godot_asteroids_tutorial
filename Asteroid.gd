@@ -20,7 +20,8 @@ func _physics_process(delta):
 	var ret = move_and_collide(velocity * delta)
 	
 	if ret:
-		velocity += ret.normal * (ret.collider_velocity.length() * bounce)
+		#velocity += ret.normal * (ret.collider_velocity.length() * bounce)
+		velocity = velocity.bounce(ret.normal)
 	
 	var position = get_position()
 	

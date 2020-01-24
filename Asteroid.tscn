@@ -1,28 +1,28 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Asteroid.gd" type="Script" id=1]
-[ext_resource path="res://Meteorite_2.png" type="Texture" id=2]
+[ext_resource path="res://meteorite_1.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 54.969
+radius = 42.0605
 
 [node name="Asteroid" type="KinematicBody2D"]
-position = Vector2( 647.918, 301.528 )
+position = Vector2( 650.185, 333.048 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 1.50101, 0.707642 )
-scale = Vector2( 0.661749, 0.64606 )
+position = Vector2( -1.4989, -1.29236 )
+scale = Vector2( 0.373811, 0.409696 )
 texture = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.342834, -0.171387 )
+position = Vector2( -4.34283, -1.17136 )
 shape = SubResource( 1 )
 __meta__ = {
 "_edit_group_": true

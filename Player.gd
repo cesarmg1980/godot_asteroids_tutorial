@@ -19,9 +19,7 @@ var acc = Vector2()
 func _ready():
 	screen_size = get_viewport_rect().size
 	pos = Vector2(screen_size.x / 2, screen_size.y /2)
-	#position = pos
 	set_position(pos)
-	#set_pos(pos)
 	set_process(true)
 
 
