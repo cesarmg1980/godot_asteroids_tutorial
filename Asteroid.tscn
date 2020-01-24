@@ -3,7 +3,7 @@
 [ext_resource path="res://Asteroid.gd" type="Script" id=1]
 [ext_resource path="res://meteorite_1.png" type="Texture" id=2]
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=1]
 radius = 54.7883
 
 [sub_resource type="ParticlesMaterial" id=2]
@@ -14,7 +14,6 @@ spread = 180.0
 flatness = 1.0
 gravity = Vector3( 0, 0, 0 )
 initial_velocity = 50.0
-angular_velocity = 0.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 
@@ -35,7 +34,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -2.94616, -0.472996 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }

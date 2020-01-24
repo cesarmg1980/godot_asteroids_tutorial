@@ -18,8 +18,12 @@ func _ready():
 	velocity = Vector2(rand_range(30, 100), 0).rotated(rand_range(0, 2*PI))
 	rotation_speed = rand_range(-1.5, 1.5)
 	screen_size = get_viewport_rect().size
-	#extents = get_node("Sprite").texture.get_size() / 2
-	init('big_asteroid', screen_size / 2)
+
+	# we initiate a random asteroid
+	var index = randi() % 2
+	var asteroids_list = textures.keys()
+	var asteroid = asteroids_list[index]
+	init(asteroid, screen_size / 2)
 
 func init(ast_size, spawn_pos):
 	var scale = Vector2()
