@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://Asteroid.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Main.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -13,8 +13,7 @@ _data = {
 script = ExtResource( 1 )
 Asteroid = ExtResource( 2 )
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 599.503, 300.83 )
+[node name="Main" parent="." instance=ExtResource( 3 )]
 
 [node name="AsteroidTimer" type="Timer" parent="."]
 wait_time = 0.5
