@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SimpleBeat.ogg-3c1b67cfd4e533419008c58df2f8aee0.oggstr"
+
+[deps]
+
+source_file="res://SimpleBeat.ogg"
+dest_files=[ "res://.import/SimpleBeat.ogg-3c1b67cfd4e533419008c58df2f8aee0.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

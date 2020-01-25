@@ -1,27 +1,28 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://blast.tscn" type="PackedScene" id=2]
-[ext_resource path="res://shipDer0006.png" type="Texture" id=3]
-[ext_resource path="res://shipDer0007.png" type="Texture" id=4]
-[ext_resource path="res://shipDer0008.png" type="Texture" id=5]
-[ext_resource path="res://shipDer0009.png" type="Texture" id=6]
-[ext_resource path="res://shipIzq0001.png" type="Texture" id=7]
-[ext_resource path="res://shipIzq0002.png" type="Texture" id=8]
-[ext_resource path="res://shipIzq0003.png" type="Texture" id=9]
-[ext_resource path="res://shipIzq0004.png" type="Texture" id=10]
+[ext_resource path="res://shipIzq0001.png" type="Texture" id=3]
+[ext_resource path="res://shipIzq0002.png" type="Texture" id=4]
+[ext_resource path="res://shipIzq0003.png" type="Texture" id=5]
+[ext_resource path="res://shipIzq0004.png" type="Texture" id=6]
+[ext_resource path="res://shipDer0006.png" type="Texture" id=7]
+[ext_resource path="res://shipDer0007.png" type="Texture" id=8]
+[ext_resource path="res://shipDer0008.png" type="Texture" id=9]
+[ext_resource path="res://shipDer0009.png" type="Texture" id=10]
 [ext_resource path="res://shipFrente.png" type="Texture" id=11]
+[ext_resource path="res://laser2.wav" type="AudioStream" id=12]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": false,
-"name": "right",
+"name": "left",
 "speed": 3.0
 }, {
 "frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
 "loop": false,
-"name": "left",
+"name": "right",
 "speed": 3.0
 }, {
 "frames": [ ExtResource( 11 ) ],
@@ -64,4 +65,8 @@ __meta__ = {
 [node name="fire_rate_timer" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
+
+[node name="shoot_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 12 )
+volume_db = -6.0
 [connection signal="body_entered" from="." to="." method="_on_Player_body_entered"]

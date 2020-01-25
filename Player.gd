@@ -7,6 +7,7 @@ export var friction = 0.65
 export (PackedScene) var bullet
 onready var laser_container = get_node("laser_container")
 onready var fire_rate_timer = get_node("fire_rate_timer")
+onready var shoot_sound = get_node("shoot_sound")
 
 var screen_size = Vector2()
 var rot = 0
@@ -62,4 +63,5 @@ func shoot():
 	var lb = bullet.instance()
 	laser_container.add_child(lb)
 	lb.start_at(rotation, get_node("muzzle").global_position) 
+	shoot_sound.play()
 

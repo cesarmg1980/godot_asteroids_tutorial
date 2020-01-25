@@ -1,7 +1,7 @@
 extends Area2D
 
 var vel = Vector2()
-export var speed = 1500
+export var speed = 1000
 
 
 # Called when the node enters the scene tree for the first time.
@@ -22,3 +22,9 @@ func _physics_process(delta):
 
 func _on_laser_lifetime_timeout():
 	queue_free()
+
+
+func _on_Blast_body_entered(body):
+	if body.get_groups().has("asteroids"):
+		queue_free()
+		body.explode(vel.normalized())
