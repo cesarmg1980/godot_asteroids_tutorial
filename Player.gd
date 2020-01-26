@@ -14,6 +14,8 @@ var rot = 0
 var pos = Vector2()
 var vel = Vector2()
 var acc = Vector2()
+var shield_level = global.max_shield_level
+var shield_up = true
 
 
 # Called when the node enters the scene tree for the first time.
@@ -35,8 +37,10 @@ func _process(delta):
 		rot += rot_speed * delta
 	if Input.is_action_pressed("ui_up"):
 		acc = Vector2(thrust,0).rotated(rot)
+		get_node("exhaust").show()
 	else:
 		acc = Vector2(0,0)
+		get_node("exhaust").hide()
 	
 	acc += vel * -friction
 	vel += acc * delta
@@ -65,3 +69,11 @@ func shoot():
 	lb.start_at(rotation, get_node("muzzle").global_position) 
 	shoot_sound.play()
 
+
+func _on_Player_body_entered(body):
+	if body.get_groups().has("asteroids"):
+		if shield_up:
+			body.explode(vel)
+			shield_level -= global.asteroid_damage[body.asteroid_size]
+		else:
+			global.game_over = false

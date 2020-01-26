@@ -1,42 +1,30 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://blast.tscn" type="PackedScene" id=2]
-[ext_resource path="res://shipIzq0001.png" type="Texture" id=3]
-[ext_resource path="res://shipIzq0002.png" type="Texture" id=4]
-[ext_resource path="res://shipIzq0003.png" type="Texture" id=5]
-[ext_resource path="res://shipIzq0004.png" type="Texture" id=6]
-[ext_resource path="res://shipDer0006.png" type="Texture" id=7]
-[ext_resource path="res://shipDer0007.png" type="Texture" id=8]
-[ext_resource path="res://shipDer0008.png" type="Texture" id=9]
-[ext_resource path="res://shipDer0009.png" type="Texture" id=10]
-[ext_resource path="res://shipFrente.png" type="Texture" id=11]
-[ext_resource path="res://laser2.wav" type="AudioStream" id=12]
+[ext_resource path="res://new_spaceship2_no_bckgrnd.png" type="Texture" id=3]
+[ext_resource path="res://spr_shield.png" type="Texture" id=4]
+[ext_resource path="res://exhaust_1.png" type="Texture" id=5]
+[ext_resource path="res://exhaust_2.png" type="Texture" id=6]
+[ext_resource path="res://exhaust_3.png" type="Texture" id=7]
+[ext_resource path="res://exhaust_4.png" type="Texture" id=8]
+[ext_resource path="res://exhaust_5.png" type="Texture" id=9]
+[ext_resource path="res://laser2.wav" type="AudioStream" id=10]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
-"loop": false,
-"name": "left",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
-"loop": false,
-"name": "right",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 11 ) ],
-"loop": false,
-"name": "front",
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "default",
 "speed": 5.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 16.4638
+radius = 31.976
 height = 29.6758
 
 [node name="Player" type="Area2D"]
-position = Vector2( 592.025, 280.162 )
+position = Vector2( 592.025, 285.173 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -44,11 +32,24 @@ __meta__ = {
 rot_speed = 2.7
 bullet = ExtResource( 2 )
 
-[node name="spr_player" type="AnimatedSprite" parent="."]
-position = Vector2( -0.159668, -0.0650635 )
-scale = Vector2( 0.169152, 0.164431 )
+[node name="player" type="Sprite" parent="."]
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 3 )
+
+[node name="shield" type="Sprite" parent="."]
+position = Vector2( 0, 10 )
+rotation = -1.5708
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 4 )
+
+[node name="exhaust" type="AnimatedSprite" parent="."]
+position = Vector2( -1, 58 )
+rotation = 1.5708
+scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 1 )
-animation = "front"
+frame = 2
+speed_scale = 2.0
+playing = true
 
 [node name="coll_player" type="CollisionShape2D" parent="."]
 position = Vector2( 0.0272827, 5.54607 )
@@ -57,16 +58,13 @@ shape = SubResource( 2 )
 [node name="laser_container" type="Node" parent="."]
 
 [node name="muzzle" type="Position2D" parent="."]
-position = Vector2( -0.27179, -55.9924 )
-__meta__ = {
-"_edit_group_": true
-}
+position = Vector2( 0.564453, -72.7172 )
 
 [node name="fire_rate_timer" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
 
 [node name="shoot_sound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 12 )
+stream = ExtResource( 10 )
 volume_db = -6.0
 [connection signal="body_entered" from="." to="." method="_on_Player_body_entered"]

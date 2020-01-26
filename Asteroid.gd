@@ -4,7 +4,7 @@ var velocity = Vector2()
 var rotation_speed
 var screen_size
 var extents
-var asteroid_name
+var asteroid_size
 var texture
 signal explode
 
@@ -19,16 +19,10 @@ func _ready():
 	add_to_group("asteroids")
 	randomize()
 	set_physics_process(true)
-
 	screen_size = get_viewport_rect().size
 
-	# we initiate a random asteroid
-	var index = randi() % 2
-	var asteroids_list = textures.keys()
-	asteroid_name = asteroids_list[index]
-
-func init(asteroid_size, initial_spawn_pos, initial_velocity):
-	asteroid_name = asteroid_size
+func init(size, initial_spawn_pos, initial_velocity):
+	asteroid_size = size
 	
 	if initial_velocity.length() > 0:
 		velocity = initial_velocity
@@ -39,8 +33,8 @@ func init(asteroid_size, initial_spawn_pos, initial_velocity):
 	
 	# we set the appropriate texture, texture's scale and collision shape scale
 	var scale = Vector2()
-	texture = load(textures[asteroid_name])
-	rescale_texture_size_and_collision_shape(asteroid_name, scale)
+	texture = load(textures[asteroid_size])
+	rescale_texture_size_and_collision_shape(asteroid_size, scale)
 	
 	extents = texture.get_size() / 2
 	set_position(initial_spawn_pos)
@@ -90,7 +84,7 @@ func rescale_texture_size_and_collision_shape(asteroid_name, scale):
 	
 
 func explode(hit_velocity):
-	emit_signal("explode", asteroid_name, get_position(), velocity, hit_velocity)
+	emit_signal("explode", asteroid_size, get_position(), velocity, hit_velocity)
 	queue_free()
 	
 	
