@@ -85,6 +85,7 @@ func rescale_texture_size_and_collision_shape(asteroid_name, scale):
 
 func explode(hit_velocity):
 	emit_signal("explode", asteroid_size, get_position(), velocity, hit_velocity)
+	global.score += global.asteroid_points[asteroid_size]
 	queue_free()
 	
 	
