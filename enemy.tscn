@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://enemy.gd" type="Script" id=1]
+[ext_resource path="res://flyingsaucer.png" type="Texture" id=2]
+[ext_resource path="res://enemy_paths.tscn" type="PackedScene" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 35.9738
+
+[sub_resource type="Animation" id=2]
+resource_name = "rotation"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("enemy_sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.00736199, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 180.0, 360.0 ]
+}
+
+[node name="Area2D" type="Area2D"]
+rotation = -0.327318
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="enemy_sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="enemy_collision" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="enemy_animation" type="AnimationPlayer" parent="."]
+playback_speed = 0.5
+anims/rotation = SubResource( 2 )
+
+[node name="enemy_paths" parent="." instance=ExtResource( 3 )]
+
+[node name="visible" type="VisibilityNotifier2D" parent="."]
+
+[node name="bullet_container" type="Node2D" parent="."]
+
+[node name="shoot_timer" type="Timer" parent="."]
+[connection signal="screen_exited" from="visible" to="." method="_on_visible_screen_exited"]
+[connection signal="timeout" from="shoot_timer" to="." method="_on_shoot_timer_timeout"]

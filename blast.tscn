@@ -16,15 +16,12 @@ radius = 4.42737
 height = 39.1492
 
 [node name="Blast" type="Area2D"]
-position = Vector2( 580, 120 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="laser_beam" type="AnimatedSprite" parent="."]
-position = Vector2( 0, 3.25 )
-scale = Vector2( 1, 1.09701 )
 frames = SubResource( 1 )
 animation = "beam"
 

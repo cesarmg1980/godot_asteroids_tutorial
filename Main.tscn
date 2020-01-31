@@ -19,6 +19,9 @@ centered = false
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 587.499, 294.323 )
+thrust = 500
+max_vel = 400
+friction = 0.65
 
 [node name="spawn_locations" type="Node2D" parent="."]
 editor/display_folded = true
@@ -61,4 +64,7 @@ volume_db = -6.0
 [node name="restart_timer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="enemy_timer" type="Timer" parent="."]
 [connection signal="timeout" from="restart_timer" to="." method="_on_restart_timer_timeout"]
+[connection signal="timeout" from="enemy_timer" to="." method="_on_enemy_timer_timeout"]

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://blast.tscn" type="PackedScene" id=2]
-[ext_resource path="res://new_spaceship2_no_bckgrnd.png" type="Texture" id=3]
+[ext_resource path="res://bgspeedship.png" type="Texture" id=3]
 [ext_resource path="res://spr_shield.png" type="Texture" id=4]
 [ext_resource path="res://exhaust_1.png" type="Texture" id=5]
 [ext_resource path="res://exhaust_2.png" type="Texture" id=6]
@@ -24,7 +24,6 @@ radius = 31.976
 height = 29.6758
 
 [node name="Player" type="Area2D"]
-position = Vector2( 592.025, 285.173 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -33,20 +32,20 @@ rot_speed = 2.7
 bullet = ExtResource( 2 )
 
 [node name="player" type="Sprite" parent="."]
-scale = Vector2( 0.4, 0.4 )
+scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 3 )
 
 [node name="shield" type="Sprite" parent="."]
-position = Vector2( 0, 10 )
 rotation = -1.5708
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 4 )
 
 [node name="exhaust" type="AnimatedSprite" parent="."]
-position = Vector2( -1, 58 )
+position = Vector2( -1, 53 )
 rotation = 1.5708
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 1 )
+frame = 3
 speed_scale = 2.0
 playing = true
 

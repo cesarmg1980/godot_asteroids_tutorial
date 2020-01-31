@@ -2,12 +2,14 @@ extends Node2D
 
 var asteroid = preload('res://Asteroid.tscn')
 var explosion = preload("res://explosion.tscn")
+var enemy = preload("res://enemy.tscn")
 onready var spawn_locs = get_node("spawn_locations")
 onready var asteroid_container = get_node("asteroid_container")
 onready var explosion_sound = get_node("explosion_sound")
 onready var back_music = get_node("back_music")
 onready var HUD = get_node("HUD")
 onready var player = get_node("Player")
+onready var enemy_timer = get_node("enemy_timer")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,6 +20,9 @@ func _ready():
 	
 func begin_next_level():
 	global.level += 1
+	enemy_timer.stop()
+	enemy_timer.set_wait_time(rand_range(20, 40))
+	enemy_timer.start()
 	HUD.show_message("Level " + str(global.level))
 	for i in range(global.level):
 		spawn_asteroid("big_asteroid", spawn_locs.get_child(i).get_position(),
@@ -59,6 +64,13 @@ func explode_player():
 	HUD.show_message("Game Over")
 	get_node("restart_timer").start()
 
-
 func _on_restart_timer_timeout():
 	global.new_game()
+
+func _on_enemy_timer_timeout():
+	var e = enemy.instance()
+	add_child(e)
+	e.target = player
+	enemy_timer.set_wait_time(rand_range(10, 20))
+	enemy_timer.start()
+	
